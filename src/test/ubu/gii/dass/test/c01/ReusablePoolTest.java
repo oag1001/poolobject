@@ -5,13 +5,13 @@ package ubu.gii.dass.test.c01;
 
 import static org.junit.Assert.*;
 
-
 import java.util.Vector;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import junit.framework.Assert;
 import ubu.gii.dass.c01.Reusable;
 import ubu.gii.dass.c01.ReusablePool;
 
@@ -47,6 +47,11 @@ public class ReusablePoolTest {
 	 */
 	@Test
     public void testGetInstance() {
+		ReusablePool pool = ReusablePool.getInstance();
+		
+		assertNotNull(pool);
+		
+		assertEquals(rpool, ReusablePool.getInstance());
         }
 
 	/**
