@@ -45,12 +45,15 @@ public class ReusablePoolTest {
 	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#getInstance()}.
 	 */
 	@Test
-	public void testGetInstance() {
-		ReusablePool pool = ReusablePool.getInstance();
-		
-		assertNotNull(pool);
-		assertEquals(rpool, ReusablePool.getInstance());
-	}
+    public void testGetInstance() {
+        ReusablePool instanciaPool = ReusablePool.getInstance();
+
+    
+        assertTrue(rpool instanceof ReusablePool);
+        assertTrue(instanciaPool instanceof ReusablePool);
+        assertTrue("No se cumple el patrón Singleton ya que hay más de una instancia.",
+                (rpool == instanciaPool) && (rpool.equals(instanciaPool)));
+    }
 
 	/**
 	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#acquireReusable()}.
