@@ -64,9 +64,7 @@ public class ReusablePoolTest {
 			for (int i = 0; i < 3; i++) {
 				reusable.add(rpool.acquireReusable());
 			}
-		} catch (NotFreeInstanceException ex) {
-			System.out.println(ex.getMessage());
-		}
+		} catch (NotFreeInstanceException ex);
 	}
 
 	/**
