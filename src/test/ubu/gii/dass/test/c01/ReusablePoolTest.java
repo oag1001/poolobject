@@ -14,6 +14,7 @@ import org.junit.Test;
 import junit.framework.Assert;
 import ubu.gii.dass.c01.Reusable;
 import ubu.gii.dass.c01.ReusablePool;
+import ubu.gii.dass.c01.NotFreeInstanceException;
 
 /**
  * @author alumno
@@ -64,7 +65,9 @@ public class ReusablePoolTest {
 			for (int i = 0; i < 3; i++) {
 				reusable.add(rpool.acquireReusable());
 			}
-		} catch (NotFreeInstanceException ex);
+		} catch (NotFreeInstanceException ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 
 	/**
