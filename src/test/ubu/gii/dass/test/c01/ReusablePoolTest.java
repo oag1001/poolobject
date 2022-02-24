@@ -14,12 +14,16 @@ import org.junit.Test;
  *
  */
 public class ReusablePoolTest {
+	private ReusablePool rpool;
+	private Vector<Reusable> reusable;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		rpool = ReusablePool.getInstance();
+        reusable = new Vector<Reusable>();
 	}
 
 	/**
