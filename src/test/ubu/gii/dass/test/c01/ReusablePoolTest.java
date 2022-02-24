@@ -11,9 +11,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
 import ubu.gii.dass.c01.Reusable;
 import ubu.gii.dass.c01.ReusablePool;
+import ubu.gii.dass.c01.DuplicatedInstanceException;
 import ubu.gii.dass.c01.NotFreeInstanceException;
 
 /**
@@ -74,7 +74,21 @@ public class ReusablePoolTest {
 	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#releaseReusable(ubu.gii.dass.c01.Reusable)}.
 	 */
 	@Test
-	public void testReleaseReusable() {
-	}
+    public void testReleaseReusable() {
+        Reusable r1, r2 = null;
+        try {
+            r1 = rpool.acquireReusable();
+            String hash1 = r1.util(); 
+            rpool.releaseReusable(r1); 
+            r2 = rpool.acquireReusable(); 
+            assertTrue(hash1.equals(r2.util()));
+            rpool.releaseReusable(r2); 
+            rpool.releaseReusable(r2);
+        } catch (NotFreeInstanceException e) { 
+            e.printStackTrace();
+        } catch (DuplicatedInstanceException e) { 
+            assertTrue(true);
+        }
+    }
 
 }
